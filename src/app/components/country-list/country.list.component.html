@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+
+<amexio-datagrid
+                  [http-method]="'get'"
+                  [http-url]="'assets/data/gridtemplate.json'"
+                  [data-reader]="'data'"
+                  [page-size] = "10"
+                  (rowSelect)="getRowData($event)">
+  <amexio-data-table-column
+                            [data-index]="'name_official'"
+                            [data-type]="'string'"
+                            [text]="'Country Name'">
+    <ng-template #amexioBodyTmpl let-column let-row="row">
+      <span *ngIf="row && row.hasOwnProperty('flag')">
+        <amexio-image [path]="'assets/flags/'+ row.flag"></amexio-image>&nbsp;{{row.name}}
+      </span>
+    </ng-template>
+  </amexio-data-table-column>
+</amexio-datagrid>

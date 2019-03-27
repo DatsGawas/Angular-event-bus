@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+
+
+<ng-container *ngIf="countryDetail; else elseBlock">
+<amexio-card-ce>
+  <amexio-body-ce >
+
+    <amexio-image [width]="'70px'" [height]="'28px'" [path]="'assets/flags/'+countryDetail.flag"></amexio-image>
+
+    <amexio-property-grid [key-value-data]="countryKeyValueData"></amexio-property-grid>
+
+    <amexio-google-map [initial-zoom-level]="2"
+
+                       [google-map-key]="'AIzaSyDKSPX97z-ndeh_Mgq3xkaML2Kp9AwHA9s'"
+                       [height]="'370px'" [data]="mapData">
+    </amexio-google-map>
+  </amexio-body-ce>
+</amexio-card-ce>
+
+</ng-container>
+<ng-template #elseBlock>
+  <amexio-label [size]="'medium-bold'">Please select country to see details.</amexio-label>
+</ng-template>

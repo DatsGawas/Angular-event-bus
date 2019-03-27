@@ -13,6 +13,9 @@ export class EventBusService {
   constructor() {
   }
 
+
+  /* SUBSCRIPTION METHOD */
+
   on(event: Events, action: any): Subscription {
     return this.subject
       .pipe(
@@ -25,19 +28,24 @@ export class EventBusService {
       ).subscribe(action);
   }
 
+  /* EVENT EMIT METHOD */
+
   emit(event: EmitEvent) {
     this.subject.next(event);
   }
 }
 
 
+/* EMIT EVENT STRUCTURE */
 
 export class EmitEvent {
   constructor(public name: any, public value?: any) {
-
   }
 }
 
+
+/* YOU CAN ADD MULTIPLE EVENT */
+
 export enum Events {
-  customerSelected
+  countrySelected
 }
